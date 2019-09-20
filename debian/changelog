@@ -1,0 +1,178 @@
+rodebian (0.24) public; urgency=medium
+
+  * add override for systemd-tmpfiles-setup.service
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 11:32:37 +0100
+
+rodebian (0.23) public; urgency=medium
+
+  * fixes to remountro
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 11:24:36 +0100
+
+rodebian (0.22) public; urgency=medium
+
+  * locking refinements
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 11:21:31 +0100
+
+rodebian (0.21) public; urgency=medium
+
+  * locking fixes
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 10:58:35 +0100
+
+rodebian (0.20) public; urgency=medium
+
+  * added advisory locking
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 10:48:06 +0100
+
+rodebian (0.19) public; urgency=medium
+
+  * wrap apt-daily & apt-daily-upgrade services with remountrw/ro
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 14 Jun 2019 09:27:05 +0100
+
+rodebian (0.18) public; urgency=medium
+
+  * remove duplicate logging
+  * mount tmpfs rather than none
+
+ -- debpkg <debpkg@undone.org.uk>  Thu, 13 Jun 2019 10:14:37 +0100
+
+rodebian (0.17) public; urgency=medium
+
+  * better logging
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 20:58:39 +0100
+
+rodebian (0.16) public; urgency=medium
+
+  * remove expr that errored in systemd but not cli (!)
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 20:54:48 +0100
+
+rodebian (0.15) public; urgency=medium
+
+  * fix missing $(expr )
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 19:37:43 +0100
+
+rodebian (0.14) public; urgency=medium
+
+  * misc fixes
+  *  - path for remountrw
+  *  - 20% or 2G tmpfs default
+  *  - mount /tmp as well as /rw (or whatever)
+  *  - use $NAME
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 19:24:42 +0100
+
+rodebian (0.13) public; urgency=medium
+
+  * journal flush is very early, do it before that
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 15:37:25 +0100
+
+rodebian (0.12) public; urgency=medium
+
+  * run early, mount own /rw
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 14:45:43 +0100
+
+rodebian (0.11) public; urgency=medium
+
+  * use /rw instead of /tmp, avoiding conflict with systemd
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 13:05:28 +0100
+
+rodebian (0.10) public; urgency=medium
+
+  * another sequencing tweak..
+  * after local-fs but before tempfiles
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 12:13:37 +0100
+
+rodebian (0.9) public; urgency=medium
+
+  * needs systemd-remount-fs
+  * put before systemd-tmpfiles-setup which is required by subsequent units
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 11:59:11 +0100
+
+rodebian (0.8) public; urgency=medium
+
+  * fixed mess i made in service file
+  *   - removed After: which created circular dependency
+  *   - removed duplicate Before: and re-added shutdown.target
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 11:48:26 +0100
+
+rodebian (0.7) public; urgency=medium
+
+  * added /var/lib/systemd to sync list
+  * trimmed before to just sysinit.target and systemd-remount-fs.service
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 11:38:33 +0100
+
+rodebian (0.6) public; urgency=medium
+
+  * still needed to be before:
+  *     systemd-timesyncd.service systemd-tmpfiles-setup.service systemd-update-utmp.service
+  * as well as before:
+  *     systemd-remount-fs.service
+  *
+  * despite timsync being _after_ remount and this being _before_ (?!)
+  *
+  * also set to be before sysinit.target
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 11:13:41 +0100
+
+rodebian (0.5) public; urgency=medium
+
+  * should run before systemd service to remount local filesystems
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 10:57:29 +0100
+
+rodebian (0.4) public; urgency=medium
+
+  * startup sequencing
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 02:23:34 +0100
+
+rodebian (0.3) public; urgency=medium
+
+  * startup dependencies
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 02:12:01 +0100
+
+rodebian (0.2+nmu3) public; urgency=medium
+
+  * systemd unit exec paths
+
+ -- debpkg <debpkg@undone.org.uk>  Wed, 12 Jun 2019 00:15:13 +0100
+
+rodebian (0.2+nmu2) public; urgency=medium
+
+  * systemd fixes
+
+ -- debpkg <debpkg@undone.org.uk>  Tue, 11 Jun 2019 23:01:13 +0100
+
+rodebian (0.2+nmu1) public; urgency=medium
+
+  * fixy fixy ish the package signing
+
+ -- debpkg <debpkg@undone.org.uk>  Tue, 11 Jun 2019 22:34:16 +0100
+
+rodebian (0.2) unstable; urgency=medium
+
+  * systemd version
+
+ -- debpkg <debpkg@undone.org.uk>  Fri, 07 Jun 2019 12:35:19 +0100
+
+rodebian (0.1) unstable; urgency=medium
+
+  * Initial Release.
+
+ -- debian packages <debpkg@undone.org.uk>  Wed, 05 Jun 2019 00:02:02 +0100

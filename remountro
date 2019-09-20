@@ -1,0 +1,27 @@
+#!/bin/sh
+
+LOCKPATH=/var/lock/rodebian
+
+[ ! -d $LOCKPATH ] && mkdir -p $LOCKPATH
+
+LOCKER="user-$USER"
+[ -z "$USER" ] && LOCKER="__anonymous__"
+[ -z "$1" ] || LOCKER="$1"
+
+[ -e "$LOCKPATH/$LOCKER.lock" ] && rm "$LOCKPATH/$LOCKER.lock" && echo "removed read-write lock for $LOCKER"
+
+LOCKERS=""
+for lock in $LOCKPATH/*.lock; do
+    [ -e "$lock" ] && LOCKERS="$LOCKERS $(echo $lock | sed -n 's/.*\/\(.*\)\.lock/\1/p')"
+done
+
+if [ -z "$LOCKERS" ]; then
+    sync
+    sleep 1
+    mount -o remount,ro /
+    grep -qE "\/\s{1,}[^\s]{1,}\s{1,}ro," /proc/self/mounts && echo "filesystem is read-only" && exit 0
+else
+    echo "read-write locked by:$LOCKERS"
+fi
+
+echo "filesystem is NOT read-only"

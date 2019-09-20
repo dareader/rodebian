@@ -1,0 +1,12 @@
+# Apart from /var/tmp and /var/log, add extra directories to allow read-write.
+# It is a space-separated list of directories for holding updates of files in
+# the directory by tmpfs/aufs/unionfs and sync back to disk before reboot.
+# List directories without leading slash!
+#
+#RODEBIAN_SYNC_DIRS="var/lib/dhcp"
+RODEBIAN_SYNC_DIRS=""
+
+# space-separated list of directories to allow
+# read-write, but do not support sync back
+RODEBIAN_RW_DIRS="var/lib/sudo"
+

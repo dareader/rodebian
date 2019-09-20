@@ -1,0 +1,15 @@
+#!/bin/sh
+
+LOCKPATH=/var/lock/rodebian
+
+[ ! -d $LOCKPATH ] && mkdir -p $LOCKPATH
+
+LOCKER="user-$USER"
+[ -z "$USER" ] && LOCKER="__anonymous__"
+[ -z "$1" ] || LOCKER="$1"
+
+touch "$LOCKPATH/$LOCKER.lock" && echo "added read-write lock for $LOCKER"
+mount -o remount,rw,noatime /
+
+
+

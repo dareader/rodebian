@@ -1,0 +1,17 @@
+Source: rodebian
+Section: public
+Priority: optional
+Maintainer: debpkg <debpkg@undone.org.uk>
+Build-Depends: debhelper (>= 9)
+Standards-Version: 3.9.8
+Homepage: <insert the upstream URL, if relevant>
+#Vcs-Git: https://anonscm.debian.org/collab-maint/rodebian.git
+#Vcs-Browser: https://anonscm.debian.org/cgit/collab-maint/rodebian.git
+
+Package: rodebian
+Architecture: all
+Depends: ${misc:Depends}, rsync, lsof
+Description: read-only root for debian system on flash media
+ read-only root derived from voyage linux
+ minimises wear on flash media by using tmpfs for writes
+ 

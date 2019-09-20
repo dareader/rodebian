@@ -1,0 +1,17 @@
+[Unit]
+SourcePath=/sbin/rodebian
+Description=LSB: rodebian tmpfs and sync
+DefaultDependencies=no
+After=local-fs.target
+Before=systemd-tmpfiles-setup.service shutdown.target
+Conflicts=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+StandardOutput=syslog+console
+ExecStart=/sbin/rodebian start
+ExecStop=/sbin/rodebian stop
+
+[Install]
+WantedBy=sysinit.target
