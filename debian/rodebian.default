@@ -10,3 +10,7 @@ RODEBIAN_SYNC_DIRS=""
 # read-write, but do not support sync back
 RODEBIAN_RW_DIRS="var/lib/sudo"
 
+# maximum memory to allocate for read-write storage
+# defaults to smaller of 2GB or 20% RAM if not defined here
+#MEM="2g"
+#MEM="20%"

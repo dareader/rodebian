@@ -1,3 +1,11 @@
+rodebian (1.0) public; urgency=medium
+
+  * add 'MEM' to defaults
+  * add example crontab
+  * add attributions, license, etc for initial public release
+
+ -- debpkg <debpkg@undone.org.uk>  Thu, 25 Feb 2021 13:28:05 +0000
+
 rodebian (0.24) public; urgency=medium
 
   * add override for systemd-tmpfiles-setup.service
